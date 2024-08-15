@@ -1,0 +1,120 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-container{
+    width: 100%;
+    max-width: 400px;
+    background : linear-gradient(360deg, #8f4ced,#e97df5);
+    border-radius: 25px;
+    padding: 50px;
+}
+
+.search-icon-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.search-icon-container .search-input{
+    border: 0;
+    outline: none;
+    border-radius: 50px;
+    height: 40px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.search-icon-container .search-input:hover{
+    cursor: pointer;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;}
+
+.search-icon-container .button{
+    border: none;
+    outline: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+}
+.search-icon-container .button:hover{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.search-icon-container .button .search-icon{
+    width: 20px;
+    }
+
+.error{
+    display: none;
+}
+
+.weather-conditions{
+    text-align: center;
+}
+
+.weather-conditions .weather-image{
+    width: 150px;
+    margin-top: 20px;
+}
+
+.weather-conditions .temp{
+    color: #fff;
+    font-weight: 500;
+    font-size:35px;
+    margin: 0;
+}
+
+.weather-conditions .city-name{
+    color: #fff;
+    font-size: 40px;
+}
+
+.humidity-wind{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.humidity-wind .humidity{
+    display: flex;
+    align-items: center;
+}
+
+.humidity-wind .humidity .humidity-image{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+
+.humidity-wind .wind{
+    display: flex;
+    align-items: center;
+}
+
+.humidity-wind .wind .wind-image{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.weather{
+    display: none;
+}
+
+h3{
+    color: #fff;
+}
+
+h4{
+    color: #fff;
+}

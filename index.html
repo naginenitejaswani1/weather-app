@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather-App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="weather-container">
+        <div class="search-icon-container">
+            <input type="text" class="search-input" spellcheck="false" placeholder="Enter city name" />
+            <button class="button"><img src="./assets/search.png" class="search-icon"/></button>
+        </div>
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        <div class="weather">
+            <div class="weather-conditions">
+                <img src="./assets/clouds.png" class="weather-image" />
+                <h2 class="temp">22°C</h2>
+                <h1 class="city-name">Banglore</h1>
+            </div>
+            <div class="humidity-wind">
+                <div class="humidity">
+                    <img src="./assets/humidity.png" class="humidity-image" />
+                    <div class="hum">
+                        <h3>Humidity</h3>
+                        <h4 class="humidity-percentage">20%</h4>
+                    </div>
+                </div>
+                <div class="wind">
+                    <img src="./assets/wind.png" class="wind-image" />
+                    <div class="win">
+                        <h3>Wind Speed</h3>
+                        <h4 class="wind-speed">22 km/h</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const apiUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q=';
+        const apiKey = '0b98f0cfebbe09fea7e39f73905c07b4';
+        const searchbtn = document.querySelector('.button');
+        const searchInput = document.querySelector('.search-input');
+        const weatherImg = document.querySelector('.weather-image');
+
+        async function getWeatherData(city){
+            const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+            if(response.status == 404){
+                document.querySelector('.error').style.display = "block";
+                document.querySelector('.weather').style.display = "none";
+                document.querySelector('.error').innerHTML = data.message;
+            }
+            else {
+                var data = await response.json();
+
+                console.log(data);
+
+                document.querySelector('.temp').innerHTML = Math.round(data.main.temp) + "°C";
+                document.querySelector('.city-name').innerHTML = data.name;
+                document.querySelector('.humidity-percentage').innerHTML = data.main.humidity + "%";
+                document.querySelector('.wind-speed').innerHTML = data.wind.speed + "km/p";
+
+                document.querySelector('.search-input').value = "";
+
+            
+
+                if(data.weather[0].main == "Clear"){
+                    weatherImg.src = "assets/clear.png";
+                }
+                else if (data.weather[0].main == "Clouds"){
+                    weatherImg.src = "assets/clouds.png";
+                }
+                else if (data.weather[0].main == "Drizzle"){
+                    weatherImg.src = "assets/drizzle.png";
+                }
+                else if (data.weather[0].main == "Mist"){
+                    weatherImg.src = "assets/mist.png";
+                }
+                else if (data.weather[0].main == "Rain"){
+                    weatherImg.src = "assets/rain.png";
+                }
+                else if (data.weather[0].main == "Snow"){
+                    weatherImg.src = "assets/snow.png";
+                }
+
+                document.querySelector('.weather').style.display = "block";
+                document.querySelector('.error').style.display = "none";
+
+            }
+
+            
+
+        }
+
+        
+
+        searchbtn.addEventListener("click", () => {
+            getWeatherData(searchInput.value);
+        })
+
+    </script>
+    
+</body>
+</html>
